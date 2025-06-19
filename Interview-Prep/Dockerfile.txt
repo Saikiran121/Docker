@@ -1,0 +1,96 @@
+01. Dockerfile
+    - Docker builds Images by reading the instructions from Dockerfile. 
+    - A Dockerfile is a text file containing instructions for building your source code 
+
+02. Dockerfile Instructions 
+
+    a. FROM <image> 
+        - Defines a base for your image.
+        - The FROM instruction initializes a new build stage and sets the Base Image for subsequent instructions. 
+        - A valid Dockerfile must start with a FROM instruction. 
+        - The FROM instruction can be used multiple times in a Dockerfile to create multiple images. 
+        - The FROM instruction can also be used to create multi-stage builds.
+    
+    b. RUN <command> 
+        - Executes any commands in a new layer on top of the current image and commits the results. 
+        - The result of the RUN command will be used for the next step in the Dockerfile. 
+        - The RUN command can be used to install packages, copy files, or run scripts.
+    
+    c. WORKDIR <path> 
+        - Sets the working directory for any RUN, CMD, ENTRYPOINT, COPY and ADD instructions that follow it in the Dockerfile. 
+        - If the WORKDIR does not exist, it will be created. 
+        - If there are multiple WORKDIR instructions in a Dockerfile, all of them will be applied to the final image.
+    
+    d. COPY <src> <dest>
+        - Copies files and directories from the host filesystem into the image filesystem. 
+        - The COPY instruction can be used to copy files from the host to the image, or from one location in the image to another.
+        - The COPY instruction can also be used to copy files from a URL.
+        - The COPY instruction can be used to copy files from a local directory to a remote directory.
+    
+    e. CMD <command>
+        - Provides defaults for an executing container. 
+        - There can only be one CMD instruction in a Dockerfile. 
+        - If you specify more than one CMD instruction, only the last CMD instruction will be used.
+        - The CMD instruction can be used to specify the command to run when the container starts.
+        - The CMD instruction can also be used to specify the arguments to the command.
+        - The CMD instruction can be used to specify the working directory for the command.
+        - The CMD instruction can be used to specify the environment variables for the command.
+        - The CMD instruction can be used to specify the user for the command.
+        - The CMD instruction can be used to specify the entrypoint for the command.
+        - The CMD instruction can be used to specify the network mode for the command.
+        - The CMD instruction can be used to specify the hostname for the command.
+        - The CMD instruction can be used to specify the domain name for the command.
+        - The CMD instruction can be used to specify the user for the command.
+        - The CMD instruction can be used to specify the group for the command
+    
+    f. 
+
+03. Things to know before building the Dockerfile
+
+    a. Understanding the Application Requirements 
+        - What programming language/framework does it use? (eg: Node.js, Java, Python)
+        - What are the dependencies? (eg: pip packages, system libraries)
+        - Does it need a build step? (eg: npm run build, mvn package)
+        - What are the runtime requirements? (eg: environment variables, config files)
+    
+    b. Know Dockerfile Basics 
+        - FROM: Base image to use
+        - RUN: Commands to run during build
+        - COPY: Copy files from host to image
+        - CMD: Default command to run when container starts
+        - ENTRYPOINT: Command to run when container starts
+        - ENV: Environment variables to set
+        - EXPOSE: Ports to expose
+        - VOLUME: Directories to mount as volumes
+        - WORKDIR: Working directory for commands
+    
+    c. Choose a Good Base Image 
+        - Use the official images from DockerHub 
+        - Prefer minimal Images (eg: Alpine, Distroless) for smaller image sizes 
+        - Match base image to your app’s environment (e.g., python:3.11-slim for Python apps).
+    
+    d. Use .dockerignore 
+        - Similar to .gitignore, it tells Docker which files/folders to ignore when building the image.
+        - Helps reduce image size and build time by excluding unnecessary files (e.g., node_modules, .git).
+    
+    e. Multi-Stage builds 
+        - Allow separating build and runtime environments.
+        - Helps keep final image small and secure 
+    
+    f. Security Best Practices 
+        - Use non-root users in containers 
+        - Regularly update base images to patch vulnerabilities 
+        - Scan images for vulnerabilities using tools like Trivy or Clair 
+        - Limit container capabilities and use seccomp profiles 
+        - Avoid hardcoding secrets in Dockerfile; use Docker secrets or environment variables instead.
+    
+    g. Optimize Layer Caching
+        - Order instructions to take advantage of Docker’s cache (frequent changes should come last).
+          # Good 
+          COPY package.json ./
+          RUN npm install
+          COPY . . 
+
+          # Bad
+          COPY . . 
+          RUN npm install

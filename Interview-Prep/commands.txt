@@ -1,0 +1,175 @@
+Docker Image commands
+
+01. Build Image from a Dockerfile 
+    # docker build -t <name>:<tag> .
+
+02. List Images 
+    # docker images 
+
+03. Download image from registry 
+    # docker pul <image> 
+
+04. Upload image to registry
+    # docker push <image> 
+
+05. Remove image 
+    # docker rmi <image> 
+
+06. Tag image with new name 
+    # docker tag <image> <new-name> 
+
+07. Show detailed image info 
+    # docker inspect <image> 
+
+-------------------------------
+
+Docker container commands 
+
+01. Run a container from image 
+    # docker run <image> 
+
+02. Run interactively with terminal 
+    # docker run -it <image> 
+
+03. Run in detached mode (background)
+    # docker run -d <image> 
+
+04. List running containers
+    # docker ps 
+
+05. List all the containers
+    # docker ps -a 
+
+06. Start the stopped container
+    # docker start <container> 
+
+07. Stop the container
+    # docker stop  <container>
+
+08. Restart container
+    # docker restart <container>
+
+09. Force stop a container
+    # docker kill <container>
+
+10. Remove a container
+    # docker rm <container>
+
+11. Run command inside the running container
+    # docker exec -it <container> bash 
+
+12. View container logs 
+    # docker logs <container>
+
+13. Attach terminal to container
+    # docker attach <container>
+
+14. Copy files from container to host 
+    # docker cp <container>:<path> <host-path> 
+
+15. Rename a container
+    # docker rename <old> <new> 
+
+16. Detailed info about container
+    # docker inspect <container>
+
+----------------------------------------------------------------
+
+Dockerfile and Build commands
+
+01. Build using a specific Dockerfile
+    # docker build -f <Dockerfile> -t <name> .
+
+02. Build without cache 
+    # docker build --no-cache .
+
+03. Remove unused build cache 
+    # docker builder prune
+
+--------------------------------------------------------------------
+
+Docker Volumes command
+
+01. Create Volume 
+    # docker volume create <name> 
+
+02. List volumes 
+    # docker volume ls 
+
+03. Inspect volume 
+    # docker volume inspect <name> 
+
+04. Remove volume 
+    # docker volume rm <name> 
+
+05. Remove all unused volumes 
+    # docker volume prune 
+
+-----------------------------------------------------------------------
+
+Docker Network Commands 
+
+01. List networks 
+    # docker network ls 
+
+02. Create a new network
+    # docker network create <name> 
+
+03. Inspect a network
+    # docker network inspect <name> 
+
+04. Connect container to network
+    # docker network connect <network> <container>
+
+05. Disconnect container from network
+    # docker network disconnect <network> <container>
+
+06. Remove a Network
+    # docker network rm <name>
+
+--------------------------------------------------------------------------
+
+Cleanup commands
+
+01. Remove all unused containers, networks, images 
+    # docker system prune 
+
+02. Remove unused images 
+    # docker image prune 
+
+03. Remove stopped containers 
+    # docker container prune 
+
+04. Cleanup build cache 
+    # docker builder prune 
+
+05. Remove unused volumes 
+    # docker volume prune 
+
+06. Remove unused networks
+    # docker network prune 
+
+------------------------------------------------------------------------
+
+Docker Compose Commands 
+
+01. Start services defined in docker-compose.yml
+    # docker-compose up
+
+02. Start in detached mode 
+    # docker-compose up -d 
+
+03. Stop and remove services 
+    # docker-compose down 
+
+04. Build services
+    # docker-compose build 
+
+05. View logs 
+    # docker-compose logs 
+
+06. List containers managed by compose
+    # docker-compose ps 
+
+07. Exec into a service container
+    # docker-compose exec <service> bash

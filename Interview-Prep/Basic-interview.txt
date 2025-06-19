@@ -1,0 +1,301 @@
+01. What is Docker?
+    - Docker is an Open-source platform that allows you to automate the development, shipping, and deployment of applications inside lightweight,
+      portable containers.
+    
+    - In simple terms Docker packages your applications and all its dependecies (code, libraries, tools, config files) into a container so that 
+      it runs reliably across different environments, whether its your local machine, a test server or production. 
+
+      
+02. How is Docker different from a virtual machine?
+    - Docker and Virtual Machines both allow you to run applications in isolated environments, but they are fundamentally different in architecture,
+      performance and resource usage.
+    
+    a. Docker 
+        - Shares the hosts OS Kernel
+        - lightweight
+        - It boots in a few seconds 
+        - HOST OS can be differnt from the container OS 
+    
+    b. Virtual Machines
+        - Has its own OS 
+        - It boots in minutes 
+        - Its heavy
+        - Host OS can be different from guest OS.
+
+
+03. What is a Docker container?
+    - A Docker container is a lightweight, standalone, executable package that includes everything needed to run a piece of software-code, 
+      runtime, system tools, libraries and settings bundled together so it runs consistently across environments.
+    
+    - A Docker container is like sealed box with your app and all its dependecies, running on a shared host OS, but isolated from other 
+      containers.
+    
+    - Example:
+      If you're building a Node.js app, instead of setting up node, npm and packages on every server, you:
+      a. Build a Docker image with everything pre-installed.
+      b. Run it as a container anywhere docker runs.
+      c. The app works the same across dev, test and production.
+
+
+04. What is a Docker image?
+    - A Docker Image is a read-only, lightweight, and standalone template used to create Docker containers. It includes everything needed to run 
+      a application.
+    
+    - A Docker Image is a blueprint, and a DOcker container is the running instance of that blueprint.
+
+
+05. What is a Dockerfile?
+    - A Dockerfile is like a receipe for building a Docker Image.
+
+    - A Dockerfile is a text file containing step-by-step instructions on how to build a Docker image. It defines everything needed to setup 
+      your application environments -- OS, dependecies, configurations, and how to run the app.
+
+
+06. What is Docker Hub?
+    - Dockerhub is a Docker's official cloud-based registry service where you can:
+      a. Store Docker Images 
+      b. Share them publically or privately
+      c. Distrubute and Pull images for use on any system with Docker installed.
+    
+    - In simple terms Dockerhub is like GitHub of Docker Images.
+
+
+07. What are the benefits of using Docker?
+    - It works on my machine is no longer a problem.
+    - Docker containers runs the same on any platform as long as Docker is installed.
+    - Containers starts in seconds, much faster than VMs.
+    - Speeds up development, testing and deployment cycles.
+    - Uses less RAM, CPU and disk.
+    - Docker easily intigrates with CI/CD tools.
+
+
+08. What is the difference between docker run and docker start?
+    a. docker run 
+        - Creates a new container from a Docker image.
+        - Starts the container immediately.
+        - Can include configuration options (ports, volumes, env vars, etc.)
+        - You can use this first time you want to run an image.
+
+    b. docker start
+        - Starts and existing, stopped container.
+        - Does not create a new container.
+        - Cannot be used to change container configurations.
+        - You can use this to restart a container that was previously stopped.
+
+
+09. What is the use of docker ps command?
+    - The docker ps command used to list the running containers on your system. 
+
+
+10. What does the EXPOSE instruction do in a Dockerfile?
+    - A EXPOSE instruction in a Dockerfile documents the network ports that the container listens on at runtime.
+
+
+11. How do you build a Docker image from a Dockerfile?
+    - # docker build -t <name>:<tag> <path-to-Dockerfile>
+
+12. How do you list all running containers?
+    - # docker ps 
+  
+13. How do you stop a running container?
+    - # docker stop <container-name>
+
+14. How do you remove a Docker image?
+    - # docker rmi <image-name> 
+
+15. How do you run a container in the background?
+    - # docker run -d <image-name>
+
+16. What command do you use to see logs of a container?
+    - # docker logs <container-name>
+
+17. How do you enter into a running Docker container's shell?
+    - # docker exec -it <container-name> /bin/bash
+
+18. How do you copy a file from the container to the host machine?
+    - # docker cp <container-id-or-name>:<path-inside-container> <path-on-host>
+
+
+19. What are the common instructions used in a Dockerfile?
+    - Common instructions used in Dockerfile are FROM, COPY, ADD, CMD, EXPOSE, WORKDIR, RUN.
+
+
+20. What is the purpose of CMD and ENTRYPOINT?
+    a. CMD 
+        - Sets the default command and arguments for the container.
+        - Can be Overriden by providing a command at docker run.
+        - There can be only one CMD in a Dockerfile; If multiple are present, the last one wins.
+        - Usually used to specify the main command your container runs.
+        - Example: #CMD ["nginx", "-g", "daemon off;"]
+          If you run docker run myimage, the above command runs 
+          But if you run docker run myimage echo hello, the container runs echo hello instead overriding CMD.
+    
+    b. ENTRYPOINT
+        - Sets a fixed executable that always runs.
+        - Arguments that specified with CMD or at docker run get passed as parameters to the ENTRYPOINT.
+        - Useful when you want the container behave like a specific executable with optional parameters.
+        - Like CMD, only ONE ENTRYPOINT is allowed per Dockerfile.
+
+
+21. What is the difference between COPY and ADD?
+    - Both COPY and ADD instructions in a Dockerfile used to copy files and directories from your host machine into the Docker image during 
+      the build process, but they have some differences.
+
+    a. COPY
+        - Copies files/directories from local context to image.
+        - Does not supports URLs
+        - 
+
+    b. ADD
+        - Copies files/directories and supports extra features
+        - Yes, can download files from remote URLs
+        - Yes, auto-extracts compressed files (e.g., .tar, .gz) when added
+        - For when you need the extra features (like unpacking archives or fetching remote files)
+
+
+22. How can you reduce the image size when writing Dockerfiles?
+    - Choose a minimal base image.
+    - Combine multiple RUN commands.
+    - Use .dockerignore file 
+    - Avoid installing unnecessary packages.
+    - Use multi-stage builds.
+
+
+23. What is a multi-stage build in Docker?
+    - A multi-stage build in Docker is a way to use multiple FROM statements in a single Dockerfile to create smaller, more efficient images by 
+      separating the build environments from the final runtime environment.
+
+
+24. What is Docker Compose?
+    - Docker Compose is a tool for defining and running multi-container Docker applications. It tells you configure all your services, networks, 
+      and volumes in a single docker-compose.yaml file and manage them together with simple commands.
+
+
+25. What is the purpose of docker-compose.yml?
+    - The docker-compose.yaml file is the core configuration file used by Docker Compose. Its purpose is to define, configure, and manage 
+      multi-container Docker applications in a single, human readble YAML file.
+
+
+26. How do you start and stop services with Docker Compose?
+    a. Start a service
+       # docker-compose up 
+    
+    b. Stop a service 
+       # docker-compose down 
+
+
+27. You have a Python application. How would you containerize it using Docker?
+    - To containerize a python application using docker, we need to 
+        a. Create a Dockerfile to define the image 
+        b. Add the requirements.txt 
+        c. Build the Docker Image.
+        d. Run the container from the image.
+    
+    - Step by step: containerizing a Python App 
+        a. Project Structure
+           my-python-app/
+            app.py
+            requirements.txt
+            Dockerfile
+        
+        b. app.py (python code)
+           
+           from flask import Flask 
+           app = Flask(_name_)
+           @app_route('/')
+           def hello();
+                return "Hello from Dockerized Python App!!!!!"
+           if _name_=="_main_"
+                app.run(host='0.0.0.0',port=5000)
+        
+        c. requirements.txt
+           flask 
+        
+        d. Dockerfile 
+           #Base Image
+           FROM python:3.11-slim
+
+           #Set the working directory
+           WORKDIR /app 
+
+           #COPY files 
+           COPY requirements.txt .
+           RUN pip install --no-cache-dir -r requirements.txt
+
+           COPY . .
+
+           EXPOSE 5000
+
+           #RUN the app 
+           CMD ["python","app.py"]
+        
+        e. Build the Docker Image 
+           # docker build -t my-python-app .
+
+        f. Run the container
+           # docker run -p 5000:5000 my-python-app
+
+
+28. If your container keeps crashing, how would you troubleshoot it?
+    a. Check the container logs 
+       # docker logs <container-name/id>
+       This is first and fastest way to see error messages, stack traces, or crashes
+    
+    b. Run the container in interactive mode 
+       # docker run -it <image> /bin/bash 
+    
+    c. Inspect the container status and exit code 
+       # docker ps -a 
+
+       0 = successful exit
+       1 = general error (exception)
+       137 = killed (eg: out-of-memory)
+       139 = segmentation fault  
+
+
+29. You made changes to code, but the Docker container doesn’t reflect it. What might be the issue?
+    - If your Docker container doesn’t reflect code changes, it's Usually because the container is running an older image that hasn't 
+      been rebuilt or restarted. Here's a breakdown of common causes and how to fix them:
+      a. You didn't rebuilt the image 
+      b. You're running an old container
+      c. Dockerfile COPY caching
+
+
+30. You have two services that need to talk to each other. How would you set that up using Docker?
+    a. Using docker-compose 
+       
+       version: '3.8'
+
+       services:
+            app:
+                build: ./app
+                depends_on:
+                    - db 
+                ports:
+                    - "5000:5000"
+                environment:
+                    - DATABASE_HOST=db 
+                    - DATABASE_PORT=3306
+            
+            db:
+                image: mysql:5.7
+                environment:
+                    - MYSQL_ROOT_PASSWORD=root 
+                    - MYSQL_DATABASE=mydb
+
+        - docker-compose creates a default bridge network
+        - Services can refer to each other by service name (db in the above case)
+        - app can connect to MySQL using db:3306
+    
+    b. Without docker-compose 
+       - Create a custom network 
+         # docker network create my-network 
+       
+       - Run both containers on the same network
+         # docker run -d --name db --network my-network mysql:5.7 
+         # docker run -d --name app --network my-network my-app-image
+        
+       - Inside app connect to db:3306
+
+
+

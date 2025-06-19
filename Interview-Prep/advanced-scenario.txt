@@ -1,0 +1,59 @@
+01. A container shows as "unhealthy" in Docker. Walk through how you'd investigate and fix it.
+
+02. Explain how container file systems work and how copy-on-write impacts performance.
+
+03. Your containerized app logs are growing too large. How do you manage log rotation without restarting the container?
+
+04. A Docker container is running fine, but suddenly fails after a restart with a permission error. What's happening?
+
+05.You find a container that is eating up storage due to overlay2 growth. How do you diagnose and clean it?
+
+06. How would you debug a container that intermittently drops network packets under high load?
+
+07. You run docker exec on a container, but see a different environment than expected. Why could this happen?
+
+08. You’re asked to trace system calls made by a Docker container. How would you approach it?
+
+09. A container has zombie processes inside. How do you identify and handle them?
+
+10. Docker containers are being OOM-killed frequently. What metrics and configurations do you analyze?
+
+11. How would you build and push multi-architecture Docker images (ARM & x86) using a CI pipeline?
+
+12. Explain how you would handle dependency caching and restoration for multi-language monorepo builds.
+
+13. Your team uses many base images, some frequently updated. How would you automate and manage rebuilding downstream images?
+
+14. How can you ensure deterministic Docker builds across different environments and agents?
+
+15. How do you sign Docker images and verify their integrity before use?
+
+16. You're asked to build a minimal production image of a Java app with Alpine. What problems might you face?
+
+17. You want to optimize image pulls in a hybrid cloud environment. What strategies would you use?
+
+18. Your CI pipeline builds multiple services concurrently and fails due to Docker build cache collisions. How do you fix this?
+
+19. How do you handle dependency injection into containers (e.g., runtime configuration without rebuilding)?
+
+20. You're using a monolithic Dockerfile that’s too slow and error-prone. How would you modularize it?
+
+21. How would you audit all Docker images in your organization for known vulnerabilities, and track remediation?
+
+22. You need to enforce runtime security controls on Docker containers. What tools and approaches would you use?
+
+23. How do you configure AppArmor or seccomp profiles for Docker containers in production?
+
+24. Describe how to set up image provenance and enforce signed images with Docker Content Trust.
+
+25. A developer accidentally ran a privileged container in production. How would you detect and prevent this in the future?
+
+26. You’re designing a GitOps pipeline using Docker-based workloads. How do you structure your image lifecycle management?
+
+27. You need zero-downtime Docker-based deployment with rollback support. How would you implement it with Docker (without Kubernetes)?
+
+28. How would you design a Docker-based architecture to support blue-green or canary deployments?
+
+29. Your CI/CD builds images with secrets temporarily injected at build-time. How do you ensure they are never cached or persisted?
+
+30. How do you design a Docker-based build pipeline that supports SBOM (Software Bill of Materials) generation and compliance scanning?

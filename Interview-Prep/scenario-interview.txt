@@ -1,0 +1,62 @@
+01. A Docker container starts and exits immediately. How would you debug this?
+
+02. You're getting a "port already in use" error when starting a container. What would you check?
+
+03. A deployed container fails to reflect the latest code changes. What could be wrong?
+
+04. You need to debug an issue inside a running container. What steps would you take?
+
+05. Two containers on the same network can't communicate. How would you diagnose the issue?
+
+06. You're trying to mount a volume, but data is not persisting. What might be causing this?
+
+07. Container logs are not helpful for debugging. What alternate strategies would you use?
+
+08. You notice containers are consuming excessive memory. How do you investigate and fix it?
+
+09. Your Docker build is taking too long. How do you speed it up?
+
+10. A container that works locally fails on staging. What differences would you look for?
+
+11. You need to reduce the size of a large Docker image. What would you do?
+
+12. You want to enforce best practices in Dockerfile. How would you structure it?
+
+13. You accidentally leaked secrets in a Docker image. How do you rotate and clean up?
+
+14. Your Dockerfile builds too frequently due to cache busting. How can you fix this?
+
+15. You need to add build arguments dynamically to your Dockerfile. How would you approach it?
+
+16. How would you convert a single-stage Dockerfile into a multi-stage build?
+
+17. You need to use a private base image in your Dockerfile. How do you authenticate during build?
+
+18. You need to scan Docker images for vulnerabilities in CI. How would you implement this?
+
+19. Your build fails due to a missing system dependency. How do you fix and verify it?
+
+20. You need to use different Dockerfiles for different environments (dev/stage/prod). How would you manage this?
+
+21. How would you prevent running containers as root in a production environment?
+
+22. How do you securely pass secrets to a container at runtime?
+
+23. You want to restrict a container's access to the host network. How do you do it?
+
+24. Your Docker image contains outdated libraries with CVEs. How do you manage and patch them?
+
+25. How do you audit Docker usage and image history for compliance?
+
+26. How would you design a CI/CD pipeline that builds, tests, and pushes Docker images?
+
+27. How do you version and tag Docker images in an automated CI/CD pipeline?
+
+28. Your deployment uses latest tag and a rollback fails. How do you prevent this in the future?
+
+29. You need to test a service that depends on another container (e.g., DB). How do you set this up locally?
+
+30. You're tasked with moving legacy apps to containers. What steps would you take to containerize safely?
+
+
+
